@@ -181,7 +181,8 @@ public class QuizController {
         logger.error("We are using register user");
         logger.error("The user is registing is " + userDTO.getEmail() + userDTO.getPassword());
         Optional<User> testUser = userRepository.findByEmail(userDTO.getEmail());
-        if (testUser.isPresent()) {
+        if (!testUser.isPresent()) {
+            logger.error("Bug here? ");
             return ResponseEntity.badRequest().build();
         }
         ModelMapper mapper = new ModelMapper();
