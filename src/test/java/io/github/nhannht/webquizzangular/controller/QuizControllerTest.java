@@ -120,11 +120,11 @@ class QuizControllerTest {
     void solveQuiz() {
     }
 
-    @Test
-    void getAllCompletedQuizzes() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/quizzes")
-                .queryParam("page", "0").with(user("user").password("password"))).andDo(print()).andExpect(status().isOk());
-    }
+//    @Test
+//    void getAllCompletedQuizzes() throws Exception {
+//        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/quizzes")
+//                .queryParam("page", "0").with(user("user").password("password"))).andDo(print()).andExpect(status().isOk());
+//    }
 
     @Test
     void loginTest() throws Exception {
