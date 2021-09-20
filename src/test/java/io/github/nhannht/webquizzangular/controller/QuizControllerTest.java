@@ -126,16 +126,16 @@ class QuizControllerTest {
 //                .queryParam("page", "0").with(user("user").password("password"))).andDo(print()).andExpect(status().isOk());
 //    }
 
-    @Test
-    void loginTest() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.post("/login")
-                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                        .param("email", "nhanclassroom@gmail.com")
-                        .param("password", "password")
-                )
-                .andDo(print())
-                .andExpect(status().isBadRequest());
-    }
+//    @Test
+//    void loginTest() throws Exception {
+//        this.mockMvc.perform(MockMvcRequestBuilders.post("/login")
+//                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+//                        .param("email", "nhanclassroom@gmail.com")
+//                        .param("password", "password")
+//                )
+//                .andDo(print())
+//                .andExpect(status().isBadRequest());
+//    }
 
     @Test
     void deleteQuiz() {
