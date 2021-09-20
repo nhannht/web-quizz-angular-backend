@@ -71,7 +71,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     public  void configure(WebSecurity webSecurity){
         webSecurity.ignoring()
                 .antMatchers("/h2-console/**")
-                .antMatchers("/spring-security-rest/api/v2/api-docs");
+                .antMatchers("/spring-security-rest/api/v2/api-docs")
+                .antMatchers("swagger-ui.html");
     }
 
 }

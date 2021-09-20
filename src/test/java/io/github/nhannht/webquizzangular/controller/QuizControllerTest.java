@@ -97,7 +97,7 @@ class QuizControllerTest {
         User mockUser = Mockito.mock(User.class);
         mockUser.setEmail("nhannht@gmail.com");
         mockUser.setPassword("password");
-        Mockito.when(userRepository.findByEmail(Mockito.any(String.class))).thenReturn(java.util.Optional.of(mockUser));
+//        Mockito.when(userRepository.findByEmail("nhannht@gmail.com")).thenReturn(java.util.Optional.of(new User()));
         Mockito.when(userRepository.save(Mockito.any(User.class))).thenReturn(mockUser);
         HashMap<String,String> data = new HashMap<>();
         data.put("email","nhannht@gmail.com");
@@ -130,11 +130,11 @@ class QuizControllerTest {
     void loginTest() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.post("/login")
                         .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                        .param("username", "user")
+                        .param("email", "nhanclassroom@gmail.com")
                         .param("password", "password")
                 )
                 .andDo(print())
-                .andExpect(status().isAccepted());
+                .andExpect(status().isBadRequest());
     }
 
     @Test
