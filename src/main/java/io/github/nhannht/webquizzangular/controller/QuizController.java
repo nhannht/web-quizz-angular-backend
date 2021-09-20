@@ -32,13 +32,20 @@ import java.util.stream.Collectors;
 public class QuizController {
     Logger logger = LoggerFactory.getLogger(QuizController.class);
 
-    @Autowired
+    final
     UserRepository userRepository;
-    @Autowired
+    final
     QuizRepository quizRepository;
 
-    @Autowired
+    final
     BCryptPasswordEncoder encoder;
+
+    @Autowired
+    public QuizController(UserRepository userRepository, QuizRepository quizRepository, BCryptPasswordEncoder encoder) {
+        this.userRepository = userRepository;
+        this.quizRepository = quizRepository;
+        this.encoder = encoder;
+    }
 
     @Operation(description = "get a page with maximum 10 quizzes ")
     @GetMapping("/api/quizzes")
@@ -179,23 +186,6 @@ public class QuizController {
         logger.error("All quiz in db is " + mapperJ.writerWithDefaultPrettyPrinter().writeValueAsString(allQuizMap));
 
         return ResponseEntity.ok(node);
-    }
-    @Operation(description = "register new user")
-    @PostMapping("/api/register")
-    public ResponseEntity<Object> registerUser(@RequestBody @Valid UserDTO userDTO) {
-        logger.error("We are using register user");
-        logger.error("The user is registing is " + userDTO.getEmail() + userDTO.getPassword());
-        Optional<User> testUser = userRepository.findByEmail(userDTO.getEmail());
-        if (testUser.isPresent()) {
-            logger.error("Bug here? ");
-            return ResponseEntity.badRequest().build();
-        }
-        ModelMapper mapper = new ModelMapper();
-        User user = mapper.map(userDTO, User.class);
-        user.setPassword(encoder.encode(user.getPassword()));
-        userRepository.save(user);
-        return ResponseEntity.ok(user);
-
     }
 
     @DeleteMapping("/api/quizzes/{id}")

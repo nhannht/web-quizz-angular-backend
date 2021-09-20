@@ -1,6 +1,6 @@
 ![Heroku](https://heroku-badge.herokuapp.com/?app=sheltered-harbor-58480)
 
-![ci](https://github.com/nhannht/web-quizz-angular-backend/actions/workflows/maven.yml/badge.svg)
+![test](https://github.com/nhannht/web-quizz-angular-backend/actions/workflows/maven.yml/badge.svg)
 
 View 
 ### Endpoint
