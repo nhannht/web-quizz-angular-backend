@@ -1,4 +1,4 @@
-package io.github.nhannht.webquizzangular.securityconfig;
+package io.github.nhannht.webquizzangular.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpStatus;

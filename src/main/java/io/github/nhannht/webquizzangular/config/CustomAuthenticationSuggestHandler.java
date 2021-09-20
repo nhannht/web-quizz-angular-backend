@@ -1,4 +1,4 @@
-package io.github.nhannht.webquizzangular.securityconfig;
+package io.github.nhannht.webquizzangular.config;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;

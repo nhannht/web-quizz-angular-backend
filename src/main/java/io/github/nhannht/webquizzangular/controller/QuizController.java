@@ -8,6 +8,7 @@ import io.github.nhannht.webquizzangular.entity.Quiz;
 import io.github.nhannht.webquizzangular.entity.User;
 import io.github.nhannht.webquizzangular.repository.QuizRepository;
 import io.github.nhannht.webquizzangular.repository.UserRepository;
+import io.swagger.v3.oas.annotations.Operation;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,6 +40,7 @@ public class QuizController {
     @Autowired
     BCryptPasswordEncoder encoder;
 
+    @Operation(description = "get a page with maximum 10 quizzes ")
     @GetMapping("/api/quizzes")
     public ResponseEntity<Object> getQuiz(@RequestParam Integer page) throws JsonProcessingException {
         Pageable pageable = PageRequest.of(page, 10);
@@ -67,6 +69,7 @@ public class QuizController {
         return ResponseEntity.ok(node);
     }
 
+    @Operation(description = "create new quizz")
     @PostMapping("/api/quizzes")
     public ResponseEntity<Object> postQuiz(@RequestBody @Valid QuizDTO quizDTO, Authentication auth) {
         logger.error("We are using create quiz at /api/quizzes");
@@ -83,6 +86,7 @@ public class QuizController {
         return ResponseEntity.ok(returnQuiz);
     }
 
+@Operation(description = "get one quiz")
     @GetMapping("/api/quizzes/{id}")
     public ResponseEntity<Object> getOneQuiz(@PathVariable Long id) {
         logger.error("We are using get one quiz");
@@ -96,6 +100,7 @@ public class QuizController {
         }
     }
 
+    @Operation(summary = "Solve a quiz by known it id")
     @PostMapping("/api/quizzes/{id}/solve")
     public ResponseEntity<Object> solveQuiz(@PathVariable Long id, @RequestBody @Valid AnswerDTO answer, Authentication auth) throws JsonProcessingException {
         logger.error("we are testing question solve");
@@ -175,13 +180,13 @@ public class QuizController {
 
         return ResponseEntity.ok(node);
     }
-
+    @Operation(description = "register new user")
     @PostMapping("/api/register")
     public ResponseEntity<Object> registerUser(@RequestBody @Valid UserDTO userDTO) {
         logger.error("We are using register user");
         logger.error("The user is registing is " + userDTO.getEmail() + userDTO.getPassword());
         Optional<User> testUser = userRepository.findByEmail(userDTO.getEmail());
-        if (!testUser.isPresent()) {
+        if (testUser.isPresent()) {
             logger.error("Bug here? ");
             return ResponseEntity.badRequest().build();
         }

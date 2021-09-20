@@ -1,4 +1,4 @@
-package io.github.nhannht.webquizzangular.securityconfig;
+package io.github.nhannht.webquizzangular.config;
 
 public class SecurityConstants {
     public static final String ACTUATOR = "/actuator/shutdown";

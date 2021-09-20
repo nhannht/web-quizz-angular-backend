@@ -1,4 +1,4 @@
-package io.github.nhannht.webquizzangular.securityconfig;
+package io.github.nhannht.webquizzangular.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -61,10 +61,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userDetailsService)
-//                .passwordEncoder(encoder);
-        auth.inMemoryAuthentication()
-                .withUser("user").password(encoder.encode("password")).roles("USER");
+        auth.userDetailsService(userDetailsService)
+                .passwordEncoder(encoder);
     }
 
 
@@ -72,7 +70,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     public  void configure(WebSecurity webSecurity){
         webSecurity.ignoring()
-                .antMatchers("/h2-console/**");
+                .antMatchers("/h2-console/**")
+                .antMatchers("/spring-security-rest/api/v2/api-docs");
     }
 
 }

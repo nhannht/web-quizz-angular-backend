@@ -1,4 +1,4 @@
-package io.github.nhannht.webquizzangular.securityconfig;
+package io.github.nhannht.webquizzangular.config;
 
 import io.github.nhannht.webquizzangular.entity.User;
 import io.github.nhannht.webquizzangular.repository.UserRepository;
