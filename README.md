@@ -1,4 +1,6 @@
-![Heroku](https://heroku-badge.herokuapp.com/?app=sheltered-harbor-58480)
+![heroku](https://pyheroku-badge.herokuapp.com/?app=sheltered-harbor-58480)
+
+![tech](https://img.shields.io/badge/tech-spring_restapi-green.svg)
 
 ![test](https://github.com/nhannht/web-quizz-angular-backend/actions/workflows/maven.yml/badge.svg)
 
